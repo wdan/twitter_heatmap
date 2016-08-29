@@ -1,0 +1,28 @@
+{
+  "name": "twitter_heatmap",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.7",
+    "angular-bootstrap": "^0.12.2",
+    "angular-resource": "^1.5.7",
+    "angular-route": "^1.5.7",
+    "angular-ui-switch": "^0.1.1",
+    "bootstrap": "^3.3.6",
+    "d3": "^3.5.17",
+    "d3-tip": "^0.6.7",
+    "d3.geo.tile": "0.0.0",
+    "jquery": "^3.1.0",
+    "jquery-ui": "^1.12.0",
+    "lodash": "^4.13.1"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.5.0"
+  },
+  "description": ""
+}

@@ -1,0 +1,26 @@
+<div id="sidebar" ng-controller="sidebarCtrl" style="min-height: 800px">
+    <div style="border-bottom: 2px solid #eee;">
+        <h4> Control Panel: </h4>
+        <div style="margin-top: 20px">
+                <label style="vertical-align:top">
+                Display nodes:
+                </label>
+            <div style="display:inline-block;width:100px; margin-left: 5px;">
+                <form style="margin:0">
+                    <switch id="enabled" name="enabled" ng-model="showNodesFlag" on="On" off="Off" class="green"></switch>
+                </form>
+            </div>
+        </div>
+        <div style="margin-top: 10px">
+                <label style="vertical-align:top">
+                    Only leaders:
+                </label>
+            <div style="display:inline-block;width:100px; margin-left: 5px;">
+                <form style="margin:0">
+                    <switch id="enabled" name="enabled" ng-model="importanceFlag" on="On" off="Off" class="green"></switch>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

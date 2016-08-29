@@ -1,0 +1,93 @@
+<html lang="en" ng-app="heatmap">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Heatmap Demo</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+        <link href="node_modules/d3-tip/d3-tip.min.css" rel="stylesheet">
+        <link href="node_modules/angular-ui-switch/angular-ui-switch.css" rel="stylesheet">
+        <link href="css/app.css" rel="stylesheet">
+    </head>
+    <body ng-app="heatmap">
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="dataSelectorCtrl">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" style="color:white">Heatmap Demo</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Help</a></li>
+                    </ul>
+                    <form id="data-selector" class="navbar-form navbar-right">
+                        <select class="form-control"
+                                ng-model="selectedDataset"
+                                ng-change="updateGraph(selectedDataset)"
+                                ng-options="dataset for dataset in data.dbList">
+                            <option value = "">Select a dataset</option>
+                        </select>
+                    </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#" style="color: white; cursor: default">Dataset: </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid" style="margin-top: 50px;">
+            <div class="col-sm-10 col-md-10 col-ld-10" ng-controller="heatmapCtrl" >
+                <div id="canvas" style="width: 800px; height: 800px; margin: 0
+                    auto; margin-top: 20px; position: relative; cursor: pointer">
+                    <!--<svg width=800 height=800>-->
+                    <!--</svg>-->
+                </div>
+                <svg style="visibility:hidden; height:0">
+                  <filter id="gaussianBlur">
+                    <!--<feGaussianBlur stdDeviation="2" />-->
+                    <feGaussianBlur id="gaussianBlurElement" in="SourceGraphic" stdDeviation="3"/>
+                    <feComponentTransfer id="colorMap">
+                      <!--<feFuncR type="table" tableValues="0.94 0.74 0.42 0.19 0.03"/>-->
+                      <!--<feFuncG type="table" tableValues="0.95 0.84 0.68 0.51 0.32"/>-->
+                      <!--<feFuncB type="table" tableValues="1.00 0.90 0.84 0.74 0.61"/>-->
+                      <feFuncR type="table" tableValues="0.94 0.19 0.03"/>
+                      <feFuncG type="table" tableValues="0.95 0.51 0.32"/>
+                      <feFuncB type="table" tableValues="1.00 0.74 0.61"/>
+                      <!--<feFuncR type="table" tableValues="1 1 1"/>-->
+                      <!--<feFuncG type="table" tableValues="0.93 0.001 0"/>-->
+                      <!--<feFuncB type="table" tableValues="0.63 0.001 0"/>-->
+                    </feComponentTransfer>
+                  </filter>          
+                </svg>
+            </div>
+            <div class="col-sm-2 col-md-2 col-ld-2 sidebar">
+                <div ng-include src="'views/sidebar.html'"></div>
+            </div>
+        </div>
+        <script src="node_modules/d3/d3.min.js" charset="utf-8"></script>
+        <script src="node_modules/d3.geo.tile/index.js" charset="utf-8"></script>
+        <script src="node_modules/d3-tip/d3-tip.min.js" charset="utf-8"></script>
+        <script src="node_modules/jquery/dist/jquery.js"></script>
+        <!--<script src="node_modules/jquery-ui/build/release.js"></script>-->
+        <script src="node_modules/lodash/lodash.min.js"></script>
+        <script src="node_modules/angular/angular.js"></script>
+        <script src="node_modules/angular-ui-switch/angular-ui-switch.min.js"></script>
+        <script src="node_modules/angular-resource/angular-resource.js"></script>
+        <script src="node_modules/angular-route/angular-route.js"></script>
+        <script src="node_modules/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/dataSelectorCtrl.js"></script>
+        <script src="scripts/controllers/sidebarCtrl.js"></script>
+        <script src="scripts/controllers/heatmapCtrl.js"></script>
+        <script src="scripts/services/pipService.js"></script>
+        <script src="scripts/services/dataService.js"></script>
+    </body>
+</html>
